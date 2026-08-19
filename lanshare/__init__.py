@@ -10,7 +10,7 @@ files directly, with the transfer encrypted end-to-end using a short-lived
 PIN.
 """
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 __author__ = "lanshare contributors"
 
 from .transfer import send_file, ReceiverServer
