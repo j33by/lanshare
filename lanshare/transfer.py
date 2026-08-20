@@ -197,6 +197,11 @@ class ReceiverServer:
                     conn, addr = self._sock.accept()
                 except socket.timeout:
                     continue
+                except OSError:
+                    # The listening socket was closed from another thread
+                    # (stop() was called) while accept() was waiting - this
+                    # is an expected part of shutting down, not an error.
+                    break
                 thread = threading.Thread(
                     target=self._handle_connection, args=(conn, addr), daemon=True
                 )

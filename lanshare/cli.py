@@ -90,6 +90,16 @@ def _cmd_send(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_gui(args: argparse.Namespace) -> int:
+    try:
+        from .gui import main as gui_main
+    except SystemExit as exc:
+        print(exc)
+        return 1
+    gui_main()
+    return 0
+
+
 def _cmd_discover(args: argparse.Namespace) -> int:
     print(f"Searching for receivers for {args.timeout:.0f}s...")
     peers = discover_peers(timeout=args.timeout)
@@ -133,6 +143,9 @@ def build_parser() -> argparse.ArgumentParser:
     p_disc = sub.add_parser("discover", help="List receivers currently available on the network")
     p_disc.add_argument("--timeout", type=float, default=3.0, help="How long to listen for replies")
     p_disc.set_defaults(func=_cmd_discover)
+
+    p_gui = sub.add_parser("gui", help="Launch the desktop GUI")
+    p_gui.set_defaults(func=_cmd_gui)
 
     return parser
 

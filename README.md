@@ -51,6 +51,27 @@ python -m lanshare --help
 Requires Python 3.8+. The only runtime dependency is the widely used
 [`cryptography`](https://pypi.org/project/cryptography/) library.
 
+## Desktop GUI
+
+Prefer a window over a terminal? lanshare ships an optional desktop GUI with
+the same Send / Receive / Discover functionality as the CLI.
+
+```bash
+pip install "lanshare[gui]"
+lanshare gui
+```
+
+or run it directly without going through the CLI wrapper:
+
+```bash
+lanshare-gui
+```
+
+The GUI is built on [CustomTkinter](https://github.com/TomSchimansky/CustomTkinter)
+and talks to the exact same underlying transfer engine as the command line -
+nothing about the protocol, encryption, or discovery changes, it's just a
+window instead of a shell.
+
 ## Usage
 
 ### 1. On the receiving device

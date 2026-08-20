@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "lanshare"
-version = "1.0.2"
+version = "1.1.0"
 description = "Fast, encrypted file sharing between devices on the same Wi-Fi network or hotspot - no internet or Bluetooth required."
 readme = "README.md"
 requires-python = ">=3.8"
@@ -32,12 +32,16 @@ dependencies = [
     "cryptography>=41.0.0",
 ]
 
+[project.optional-dependencies]
+gui = ["customtkinter>=5.2.0"]
+
 [project.urls]
 Homepage = "https://github.com/j33by/lanshare"
 Issues = "https://github.com/j33by/lanshare/issues"
 
 [project.scripts]
 lanshare = "lanshare.cli:main"
+lanshare-gui = "lanshare.gui:main"
 
 [tool.setuptools.packages.find]
 include = ["lanshare*"]
